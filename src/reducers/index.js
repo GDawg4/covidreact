@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import users, * as usersSelectors from './user'
-import reports, * as reportsSelectors from './reports'
+import reports, * as reportsSelectors from './report'
 
 const reducer = combineReducers({
     users,
@@ -9,7 +9,7 @@ const reducer = combineReducers({
 
 export default reducer
 
-export const getUser = (state, id) => usersSelectors.getUser(state.users.byId, id)
+/*export const getUser = (state, id) => usersSelectors.getUser(state.users.byId, id)
 export const getUsers = (state) => usersSelectors.getUsers(state.users)
-export const getReport = (state, id) => reportsSelectors.getReport(state.reports.byId ,id)
-export const getReports = (state) => reportsSelectors.getReports(state.reports)
+export const getReport = (state, id) => reportsSelectors.getReport(state.reports.byId ,id)*/
+export const getReports = (state) => reportsSelectors.getAllReports(state.reports)

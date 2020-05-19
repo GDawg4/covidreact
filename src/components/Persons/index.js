@@ -1,13 +1,28 @@
 import React from "react";
 import './styles.css'
+import {useEffect} from 'react'
+import {connect} from 'react-redux'
+
 import Person from "../Person";
+import * as reportActions from '../../actions/report'
+import * as selectors from '../../reducers'
 
-const test = [0, 1, 2, 3]
-
-const Persons = ({}) => (
+const Persons = ({onLoad, allPersons}) => {
+    useEffect(onLoad, [])
+    return (
     <div className='persons'>
-        {test.map(person => <Person name={person} phone={person*2} />)}
+        {allPersons.map(person => <Person key = {person.id} name={person.nametag} phone={'12345678'}/>)}
     </div>
-)
+    )
+}
 
-export default Persons
+export default connect (
+    (state) =>({
+        allPersons:selectors.getReports(state)
+    }),
+    (dispatch) => ({
+        onLoad(){
+            dispatch(reportActions.startFetchingReport())
+        }
+    })
+    )(Persons)
