@@ -82,6 +82,16 @@ const isFetching = (state = false, action) => {
     }
 };
 
+const selected = (state = null, action) => {
+    switch (action.type) {
+        case types.REPORT_SELECTED:{
+            return action.payload.id
+        }
+        default:
+            return state
+    }
+}
+
 const error = (state = null, action) => {
     switch(action.type) {
         case types.REPORT_FETCH_FAILED: {
@@ -104,6 +114,7 @@ export default combineReducers({
     byId,
     order,
     isFetching,
+    selected,
     error,
 });
 
@@ -111,3 +122,4 @@ export const getReport = (state, id) => state.byId[id];
 export const getAllReports = state => state.order.map(id => getReport(state, id));
 export const isFetchingReports = state => state.isFetching;
 export const getFetchingReportsError = state => state.error;
+export const getSelected = state => getReport(state, state.selected)

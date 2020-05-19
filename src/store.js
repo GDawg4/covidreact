@@ -5,6 +5,7 @@ import {
     persistReducer,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import {composeWithDevTools} from "redux-devtools-extension";
 
 import reducer from './reducers';
 import mainSaga from './sagas';
@@ -21,9 +22,15 @@ export const configureStore = () => {
         reducer,
     );
 
+    const composeEnhancers = composeWithDevTools({
+        trace: true
+    })
+
     const store = createStore(
         persistedReducer,
-        applyMiddleware(sagaMiddleware),
+        composeEnhancers(
+            applyMiddleware(sagaMiddleware)
+        )
     );
 
     const persistor = persistStore(store);

@@ -1,10 +1,19 @@
 import React from "react";
-import './styles.css'
+import {connect} from 'react-redux'
 
-const Person = ({name, phone, onClick}) => (
-    <div className = 'person'>
+import './styles.css'
+import * as actions from '../../actions/report'
+
+const Person = ({name, phone, select}) => (
+    <div className = 'person' onClick={select}>
         {name} {phone}
     </div>
 )
 
-export default Person
+export default connect(undefined,
+    (dispatch, {id}) => ({
+        select(){
+            dispatch(actions.selectReport(id))
+        }
+    })
+    )(Person)

@@ -11,6 +11,14 @@ export const completeFetchingReport = (entities, order) => ({
         order,
     },
 });
+
+export const selectReport = (id) =>({
+    type:types.REPORT_SELECTED,
+    payload:{
+        id
+    }
+})
+
 export const failFetchingReport = error => ({
     type: types.REPORT_FETCH_FAILED,
     payload: {

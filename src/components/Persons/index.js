@@ -11,7 +11,7 @@ const Persons = ({onLoad, allPersons}) => {
     useEffect(onLoad, [])
     return (
     <div className='persons'>
-        {allPersons.map(person => <Person key = {person.id} name={person.nametag} phone={'12345678'}/>)}
+        {allPersons.map(person => <Person key = {person.id} id = {person.id} name={person.nametag} phone={'12345678'}/>)}
     </div>
     )
 }
