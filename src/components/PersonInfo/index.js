@@ -47,8 +47,8 @@ const PersonInfo = ({info, dismiss, follow}) => (
                     {info.answers_given?
                         <ul>
                             {info.answers_given
-                                .filter(answer => answer.id_questions > 0 && answer.id_questions < 11)
-                                .map(answer => <li>{answer.id_answer}</li>)
+                                .filter(answer => answer.id_questions.id > 0 && answer.id_questions.id < 11)
+                                .map(answer => <li>{`${answer.id_questions.title}: ${answer.id_answer}`}</li>)
                             }
                         </ul>:
                         <p>Seleccione un reporte</p>
@@ -58,8 +58,8 @@ const PersonInfo = ({info, dismiss, follow}) => (
                     {info.answers_given?
                         <ul>
                             {info.answers_given
-                                .filter(answer => answer.id_questions > 45)
-                                .map(answer => <li>{answer.id_answer}</li>)
+                                .filter(answer => answer.id_questions.id > 45)
+                                .map(answer => <li>{`${answer.id_questions.title}: ${answer.id_answer}`}</li>)
                             }
                         </ul>:<p>Seleccione un reporte</p>
                     }
@@ -68,8 +68,8 @@ const PersonInfo = ({info, dismiss, follow}) => (
                     {info.answers_given?
                         <ul>
                             {info.answers_given
-                                .filter(answer => answer.id_questions > 12 && answer.id_questions < 28)
-                                .map(answer => <li>{answer.id_answer}</li>)
+                                .filter(answer => answer.id_questions.id > 12 && answer.id_questions.id < 28)
+                                .map(answer => <li>{`${answer.id_questions.title}: ${answer.id_answer}`}</li>)
                             }
                         </ul>:<p>Seleccione un reporte</p>
                     }
