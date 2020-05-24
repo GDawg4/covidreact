@@ -1,5 +1,6 @@
 .person{
-    background-color: #c4c4c4;
+
+
     height: 4.25rem;
     width: 53rem;
     text-align: center;
@@ -20,12 +21,14 @@
     mix-blend-mode: normal;
 }
 
-.odd{
-    background-color: #c4c4c4;
+.info-report{
+    width: 9.75rem;
+    text-align: left;
 }
 
-.even{
-    background-color: #c4c4c4;
+.person-wrapper{
+    display: flex;
+    flex-direction: row;
 }
 
 .name-report{
@@ -33,20 +36,29 @@
 }
 
 .phone-report{
-    margin-left: 5rem;
+    margin-left: 3rem;
+    width: fit-content;
 }
 
 .carne-report{
     margin-left: 5rem;
+    width: fit-content;
 }
 
 .status-report{
-    margin-left: 5rem
+    margin-left: 4rem;
+    width: fit-content;
 }
 
 .sign{
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
     background-color: #21822B;
+    margin-top: 1rem;
+}
+
+.sign-wrapper{
+    width: 3rem;
+    padding-left: 0.5rem;
 }

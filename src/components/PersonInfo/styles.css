@@ -37,6 +37,7 @@
 
 .main-info{
     margin-left: 1.25rem;
+    width: 16rem;
 }
 
 .name{
@@ -74,7 +75,7 @@
     width: 57.75rem;
     height: 43.5rem;
     border-radius: 40px;
-    margin-left: 2.6875rem;
+    margin-left: 1rem;
 }
 
 .button{

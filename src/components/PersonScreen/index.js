@@ -6,12 +6,13 @@ import Persons from "../Persons";
 import PersonInfo from "../PersonInfo";
 import * as reportActions from "../../actions/report";
 import {startFetchingReport} from "../../actions/report";
+import defaultUser from '../../resources/default.svg'
 
-const PersonScreen = ({onLoad}) => (
+const PersonScreen = ({onLoad, sort}) => (
     <div className='person-screen'>
         {useEffect(onLoad, [])}
-        <Persons/>
-        <PersonInfo/>
+            <Persons/>
+            <PersonInfo/>
     </div>
 )
 

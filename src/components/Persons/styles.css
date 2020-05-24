@@ -5,4 +5,18 @@
 .persons{
     margin-left: 2.25rem;
     height: 43.75rem;
+    overflow-y: scroll;
+
+}
+
+.person-wrapper{
+
+}
+
+::-webkit-scrollbar {
+    background: #3B3A3B;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #078B45;
 }

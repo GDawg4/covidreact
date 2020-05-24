@@ -15,3 +15,4 @@ export const getReport = (state, id) => reportsSelectors.getReport(state.reports
 export const getAllReports = (state) => reportsSelectors.getAllReports(state.reports)
 export const getSomeReports = (state, cutOff) => reportsSelectors.getSomeReports(state.reports, cutOff)
 export const getSelected = (state) => reportsSelectors.getSelected(state.reports)
+export const getSelectedId = (state) => reportsSelectors.getSelected(state.reports)

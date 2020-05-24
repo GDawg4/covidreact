@@ -124,3 +124,4 @@ export const getSomeReports = (state, cutOff) => state.order.map(id => getReport
 export const isFetchingReports = state => state.isFetching;
 export const getFetchingReportsError = state => state.error;
 export const getSelected = state => getReport(state, state.selected)
+export const getSelectedId = state => state.selected
