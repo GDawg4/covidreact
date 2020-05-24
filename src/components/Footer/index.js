@@ -4,7 +4,7 @@ import './styles.css'
 
 const Footer = () => (
     <div className='footer'>
-        <p><a href={'https://github.com/GDawg4'} target="_blank" className='signature'>Hecho por GDawg4</a>
+        <p><a href={'https://github.com/GDawg4'} target="_blank" className='signature'>Hecho por Rodrigo Garoz</a>
             Con colaboración de:
             Sebastián Gonzáles
             Michael Chan
