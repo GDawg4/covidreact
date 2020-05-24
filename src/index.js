@@ -2,14 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import {configureStore} from "./store";
-
 import PersonScreen from "./components/PersonScreen";
+import {BrowserRouter as Router} from 'react-router-dom'
+import Header from "./components/Header";
+
+import 'normalize.css/normalize.css'
+import './styles.css'
 
 const {store, persistor} =configureStore()
 
 
 ReactDOM.render(
     <Provider store = {store}>
+        <Header/>
         <PersonScreen/>
     </Provider>,
     document.getElementById('root')

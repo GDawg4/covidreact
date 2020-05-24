@@ -12,5 +12,6 @@ export default reducer
 /*export const getUser = (state, id) => usersSelectors.getUser(state.users.byId, id)
 export const getUsers = (state) => usersSelectors.getUsers(state.users)
 export const getReport = (state, id) => reportsSelectors.getReport(state.reports.byId ,id)*/
-export const getReports = (state) => reportsSelectors.getAllReports(state.reports)
+export const getAllReports = (state) => reportsSelectors.getAllReports(state.reports)
+export const getSomeReports = (state, cutOff) => reportsSelectors.getSomeReports(state.reports, cutOff)
 export const getSelected = (state) => reportsSelectors.getSelected(state.reports)

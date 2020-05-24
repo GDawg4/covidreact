@@ -1,9 +1,168 @@
+.top-info{
+    display: flex;
+    flex-direction: row;
+    height: 5rem;
+    margin-top: 2.125rem;
+}
+
+.user-stock{
+    height: 7.5rem;
+    width: 7.5rem;
+    margin-left: 1.875rem;
+}
+
+.state{
+    margin-left: 16rem;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
+    mix-blend-mode: normal;
+}
+
+.state-color{
+    height: 3.75rem;
+    width:3.75rem;
+    border-radius: 1.875rem;
+    background-color: #21822B;
+    margin-left: 2rem;
+    margin-top: 0.8rem;
+}
+
+.main-info{
+    margin-left: 1.25rem;
+}
+
+.name{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
+    mix-blend-mode: normal;
+}
+
+.extra-info{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
+    mix-blend-mode: normal;
+}
+
 .person-info{
+    display: flex;
+    flex-direction: column;
     background-color: #e7e7e7;
     width: 57.75rem;
     height: 43.5rem;
+    border-radius: 40px;
+    margin-left: 2.6875rem;
+}
+
+.button{
+    width: 17.5rem;
+    height: 4.625rem;
+
+    justify-content: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 12px;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
 }
 
 .no{
-    margin-top: 5rem;
+    background: #3B3A3B;
+    margin-left: 8.125rem;
+}
+
+.yes{
+    background: #078B45;
+    margin-left: 8.125rem;
+}
+
+.tabs{
+    display: flex;
+    flex-direction: row;
+    background: #3B3A3B;
+    height: 3.6rem;
+    margin-top: 4rem;
+}
+
+.first{
+    padding-left: 3.15rem;
+}
+.second{
+    padding-left: 3.625rem;
+}
+.third{
+    padding-left: 1.75rem;
+}
+
+.line{
+    background: #078B45;
+    height: 1rem;
+}
+
+.info-wrapper{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.5rem;
+    height: 20rem;
+}
+
+.info{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    vertical-align: top;
+    color: #000000;
+}
+
+.one{
+    padding-left: 6.75rem;
+}
+
+.two{
+    margin-left: 14rem;
+}
+
+.three{
+    margin-left: 12rem;
+}
+
+.buttons-wrapper{
+    display: flex;
+    flex-direction: row;
 }

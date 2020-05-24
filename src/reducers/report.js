@@ -120,6 +120,7 @@ export default combineReducers({
 
 export const getReport = (state, id) => state.byId[id];
 export const getAllReports = state => state.order.map(id => getReport(state, id));
+export const getSomeReports = (state, cutOff) => state.order.map(id => getReport(state, id)).filter(report => report.possible_case >= cutOff)
 export const isFetchingReports = state => state.isFetching;
 export const getFetchingReportsError = state => state.error;
 export const getSelected = state => getReport(state, state.selected)
