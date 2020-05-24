@@ -2,7 +2,7 @@ import {call, takeEvery, put} from 'redux-saga/effects'
 import {normalize} from 'normalizr'
 
 import * as actions from '../actions/report'
-import * as types from '../types/reports'
+import * as types from '../types/report'
 import * as schemas from '../schemas/report'
 
 const BASE_URL = 'http://127.0.0.1:8000/api/v1';
@@ -25,6 +25,7 @@ function* fetchReports(action) {
                 entities:{person},
                 result
             } = normalize(jsonResult, schemas.personListSchema)
+            console.log(person)
             yield put(
                 actions.completeFetchingReport(person, result)
             )

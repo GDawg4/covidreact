@@ -5,36 +5,40 @@ import './styles.css'
 import * as actions from '../../actions/report'
 import * as selectors from '../../reducers'
 
-const Person = ({name, phone, select, index, carne, isSelected, selected}) => (
+const Person = ({person, index, selected, select}) => (
     <div className='person-wrapper' style={index%2===0 ? {backgroundColor:'#c4c4c4'} : {backgroundColor:'#e7e7e7'}}>
         <div className = 'person' onClick={select} style = {selected ? {backgroundColor:'#078B45'}: index%2===0 ? {backgroundColor:'#c4c4c4'} : {backgroundColor:'#e7e7e7'}}>
             <p className='info-report name-report'>
-                {name}
+                {person.nametag}
             </p>
             <p className='info-report phone-report'>
-                {phone}
+                12345678
             </p>
             <p className='info-report carne-report'>
-                {carne}
+                {person.carne}
             </p>
             <p className='info-report status-report'>
                 Nuevo reporte
             </p>
         </div>
         <div className= 'sign-wrapper'>
-            <div className='sign'/>
+            <div className='sign'
+                 style={!person.consent ? {backgroundColor: '#2B8BE4'} :
+                     !person.is_contacted ? {backgroundColor: '#21822B'} :
+                         !person.is_confirmed ? {backgroundColor: '#DDE100'} :
+                             {backgroundColor: '#E12900'}}/>
         </div>
     </div>
 
 )
 
 export default connect(
-    (state, {id}) => ({
-        selected: (selectors.getSelectedId(state)) ? (selectors.getSelectedId(state).id)===id :false,
+    (state, {person}) => ({
+        selected: (selectors.getSelectedId(state)) ? (selectors.getSelectedId(state).id)===person.id :false,
     }),
-    (dispatch, {id}) => ({
+    (dispatch, {person}) => ({
         select(){
-            dispatch(actions.selectReport(id))
+            dispatch(actions.selectReport(person.id))
         }
     })
     )(Person)

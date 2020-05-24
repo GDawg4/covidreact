@@ -5,6 +5,7 @@ import {configureStore} from "./store";
 import PersonScreen from "./components/PersonScreen";
 import {BrowserRouter as Router} from 'react-router-dom'
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 import 'normalize.css/normalize.css'
 import './styles.css'
@@ -16,6 +17,7 @@ ReactDOM.render(
     <Provider store = {store}>
         <Header/>
         <PersonScreen/>
+        <Footer/>
     </Provider>,
     document.getElementById('root')
 );

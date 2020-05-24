@@ -3,6 +3,8 @@
     flex-direction: row;
     height: 5rem;
     margin-top: 2.125rem;
+    width: fit-content;
+    text-align: left;
 }
 
 .user-stock{
@@ -20,7 +22,6 @@
     display: flex;
     align-items: center;
     text-align: center;
-
     color: #000000;
 
     mix-blend-mode: normal;
@@ -37,7 +38,7 @@
 
 .main-info{
     margin-left: 1.25rem;
-    width: 16rem;
+    width: 18rem;
 }
 
 .name{
@@ -119,13 +120,13 @@
 }
 
 .first{
-    padding-left: 3.15rem;
+    padding-left: 1rem;
 }
 .second{
-    padding-left: 3.625rem;
+    padding-left: 1.5rem;
 }
 .third{
-    padding-left: 1.75rem;
+    padding-left: 1.5rem;
 }
 
 .line{
@@ -149,18 +150,19 @@
     align-items: center;
     vertical-align: top;
     color: #000000;
+    width: 18rem;
 }
 
 .one{
-    padding-left: 6.75rem;
+        margin-left: 5rem;
 }
 
 .two{
-    margin-left: 14rem;
+    margin-left: 4rem;
 }
 
 .three{
-    margin-left: 12rem;
+    margin-left: 3rem;
 }
 
 .buttons-wrapper{

@@ -61,3 +61,24 @@ export const failRemovingReport = (id, error) => ({
         error,
     },
 });
+
+export const dismissReport = (id) => ({
+    type:types.REPORT_DISMISSED,
+    payload:{
+        id
+    }
+})
+
+export const followReport = (id) => ({
+    type:types.REPORT_FOLLOWED,
+    payload:{
+        id
+    }
+})
+
+export const confirmReport = (id) => ({
+    type:types.REPORT_CONFIRMED,
+    payload:{
+        id
+    }
+})

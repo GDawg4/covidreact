@@ -18,7 +18,7 @@ const Persons = ({allPersons, sort}) => {
                 <img src={defaultUser} className='sort-button twob' onClick={sort}/>
             </div>
             <div className='persons'>
-                {allPersons.map((person, index) => <Person key = {person.id} index={index} id = {person.id} name={person.nametag} carne = {person.useruvg} phone={'12345678'}/>)}
+                {allPersons.map((person, index) => <Person person = {person} index = {index}/>)}
             </div>
         </div>
     )

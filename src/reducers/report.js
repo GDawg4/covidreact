@@ -38,6 +38,33 @@ const byId = (state = {}, action) => {
         case types.REPORT_REMOVE_STARTED: {
             return omit(state, action.payload.id);
         }
+        case types.REPORT_DISMISSED:{
+            return {
+                ...state,
+                [action.payload.id]:{
+                    ...state[action.payload.id],
+                    consent:false
+                }
+            }
+        }
+        case types.REPORT_FOLLOWED:{
+            return {
+                ...state,
+                [action.payload.id]:{
+                    ...state[action.payload.id],
+                    is_contacted:true
+                }
+            }
+        }
+        case types.REPORT_CONFIRMED:{
+            return {
+                ...state,
+                [action.payload.id]:{
+                    ...state[action.payload.id],
+                    is_confirmed:true
+                }
+            }
+        }
         default: {
             return state;
         }
@@ -125,3 +152,4 @@ export const isFetchingReports = state => state.isFetching;
 export const getFetchingReportsError = state => state.error;
 export const getSelected = state => getReport(state, state.selected)
 export const getSelectedId = state => state.selected
+export const getAnswers = (state, id) => state.byId[id].answers_given
