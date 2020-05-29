@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
 import users, * as usersSelectors from './user'
 import reports, * as reportsSelectors from './report'
+import {reducer as formReducer} from 'redux-form'
 
 const reducer = combineReducers({
     users,
-    reports
+    reports,
+    form:formReducer
 })
 
 export default reducer

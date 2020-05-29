@@ -5,6 +5,7 @@ import './styles.css'
 import * as selectors from '../../reducers'
 import * as reportActions from '../../actions/report'
 import defaultUser from '../../resources/default.svg'
+import {Link} from "react-router-dom";
 
 const PersonInfo = ({info, dismiss, follow}) => (
     <div className='person-info'>
@@ -80,16 +81,18 @@ const PersonInfo = ({info, dismiss, follow}) => (
             <button className='button no' onClick={dismiss}>
                 No es caso
             </button>
-            <button className= ' button yes' onClick={follow}>
-                Dar seguimiento
-            </button>
+            <Link to={'/agreement'} style={{ textDecoration: 'none' }}>
+                <button className= ' button yes' onClick={follow}>
+                    Dar seguimiento
+                </button>
+            </Link>
         </div>
     </div>
 )
 
 export default connect(
-    state => ({
-        info:selectors.getSelected(state) ? selectors.getSelected(state):'Nel'
+    (state) => ({
+        info:selectors.getSelected(state) ? selectors.getSelected(state) : 'nel'
     }),
     (dispatch) => ({
         dismiss(report){
@@ -97,9 +100,12 @@ export default connect(
         },
         follow(report){
             dispatch(reportActions.followReport(report))
+        },
+        selectReport(userID){
+            dispatch(reportActions.selectReport(userID))
         }
     }),
-    (stateProps, dispatchProps)=>({
+    (stateProps, dispatchProps, {info})=>({
         info:stateProps.info,
         dismiss(){
             dispatchProps.dismiss(stateProps.info.id)

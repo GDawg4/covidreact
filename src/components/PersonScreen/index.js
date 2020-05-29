@@ -10,17 +10,9 @@ import defaultUser from '../../resources/default.svg'
 
 const PersonScreen = ({onLoad, sort}) => (
     <div className='person-screen'>
-        {useEffect(onLoad, [])}
             <Persons/>
             <PersonInfo/>
     </div>
 )
 
-export default connect(
-    undefined,
-    (dispatch) => ({
-        onLoad(){
-            dispatch(startFetchingReport())
-        }
-    })
-)(PersonScreen)
+export default PersonScreen

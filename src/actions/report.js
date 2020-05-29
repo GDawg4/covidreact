@@ -19,6 +19,10 @@ export const selectReport = (id) =>({
     }
 })
 
+export const deSelectReport = (id) =>({
+    type:types.REPORT_DESELECTED
+})
+
 export const failFetchingReport = error => ({
     type: types.REPORT_FETCH_FAILED,
     payload: {

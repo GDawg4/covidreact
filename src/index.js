@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import {configureStore} from "./store";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+
 import PersonScreen from "./components/PersonScreen";
-import {BrowserRouter as Router} from 'react-router-dom'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
+import Agreement from "./components/Agreement";
+import Questionnaire from "./components/Questionnaire";
 import 'normalize.css/normalize.css'
 import './styles.css'
 
@@ -15,9 +18,17 @@ const {store, persistor} =configureStore()
 
 ReactDOM.render(
     <Provider store = {store}>
-        <Header/>
-        <PersonScreen/>
-        <Footer/>
+        <PersistGate loading={null} persistor={persistor}>
+            <Router>
+                <Header/>
+                <Footer/>
+                <Switch>
+                    <Route path='/dash' exact component ={PersonScreen}/>
+                    <Route path='/agreement' exact component={Agreement}/>
+                    <Route path='/questionnaire' exact component={Questionnaire}/>
+                </Switch>
+            </Router>
+        </PersistGate>
     </Provider>,
     document.getElementById('root')
 );

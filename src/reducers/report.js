@@ -114,8 +114,12 @@ const selected = (state = null, action) => {
         case types.REPORT_SELECTED:{
             return action.payload.id
         }
-        default:
+        case types.REPORT_DESELECTED:{
+            return null
+        }
+        default:{
             return state
+        }
     }
 }
 

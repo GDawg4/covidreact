@@ -1,0 +1,31 @@
+.agreement-wrapper{
+    margin-top: 6rem;
+}
+
+.hola {
+    background-color: rebeccapurple;
+    height: 4rem;
+    width: 4rem;
+}
+.agreement-text{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+}
+
+.agreements-buttons{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    margin-left: 20.5rem;
+}
+
+.ag{
+    margin-left: 23rem;
+}
