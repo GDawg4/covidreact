@@ -6,20 +6,18 @@ import './styles.css'
 import * as selectors from '../../reducers'
 import * as reportActions from "../../actions/report";
 
-const text1 = `Buen día. En la comunidad UVG queremos contribuir a notificar y darle seguimiento a personas que hayan estado en contacto con casos infectados de coronavirus durante la pandemia de COVID-19. Para esto, hemos creado esta aplicación, en la que solicitaremos información de las personas contactos que no presentan síntomas para clasificarlo como un caso de bajo o alto riesgo. De esta manera podremos realizar una vigilancia de los miembros de la comunidad UVG y sus familiares o las personas con las que vives, que hayan estado con un caso de COVID-19. Al ingresar en esta aplicación pediremos, de cada contacto, datos demográficos (edad, sexo, lugar de residencia), factores de riesgo (por ejemplo personas con enfermedades cardiovasculares, de riñones, pulmones, diabetes, embarazo), y preguntas de su relación con el caso (por ejemplo: si viven en la misma casa, si ha tenido contacto directo y físico con un caso, distancia y tiempo a la que está estado de un caso). `
-const text2 = `Estos datos no permitirán conocer su clasificación y las medidas de vigilancia que se tendrán con cada uno de los contactos. El reporte del esta información incluye responder preguntas simples con un sí o un no, lo que te llevará 10 minutos. Este reporte de caso es un proceso confidencial y no solicitaremos el nombre. Solamente las personas del equipo de salud ocupacional de la UVG, serán los únicos que conocerán esta identificación, guardando la`
-
-const Agreement =({dismiss})=>(
+const Agreement =({notConsenting})=>(
     <div className='agreement-wrapper'>
         <div className='agreement-text'>
-            {text1}
-            <br/>
-            <br/>
-            {text2}
+            {<p>Buen día.</p>}
+            {<p>En la comunidad UVG queremos contribuir a notificar casos de personas infectadas de coronavirus durante la pandemia de COVID-19. Para esto, hemos creado esta aplicación, en la que puedes notificar la información de un caso; ya sea de tu persona o de alguna(s) de la(s) persona(s) que habitan en tu hogar. Con la notificación de esta persona enferma con COVID-19, también queremos saber, si alguna de las personas con las que haya estado, presentan síntomas respiratorios e identificarlos tempranamente, información que se colectará en otro formulario (Listado de contactos). De esta manera podremos realizar una vigilancia de los miembros de la comunidad UVG y sus familiares o las personas con las que vive. Al ingresar en esta aplicación te pediremos datos de la clasificación del caso, datos demográficos (edad, sexo, lugar de residencia), datos clínicos (fecha de inicio de síntomas, síntomas presentados), factores de riesgo (por ejemplo personas con enfermedades cardiovasculares, de riñones, pulmones, diabetes,  embarazo), si tuvo ingreso al hospital y datos epidemiológicos (por ejemplo si 14 días antes de enfermarse tuvo contacto con algún caso de COVID-19, si había viajado a algún país en el que se reporten casos, o a lugares locales en donde se han reportado casos) y datos de laboratorio (por ejemplo pruebas realizadas y sus resultados) . Estos datos no permitirán conocer información importante del caso y poder identificar grupos de riesgo y dar seguimiento a esta pandemia en tiempo, lugar y persona.  </p>}
+            {<p>El reporte del esta información incluye responder preguntas simples con un sí o un no, lo que te llevará 10 minutos. Este reporte de caso es un proceso confidencial y no solicitaremos el nombre. Solamente las personas del equipo de salud ocupacional  de la UVG, serán los únicos que conocerán esta identificación, guardando la confidencialidad debida. Esta identificación permitirá tomar acciones oportunas para apoyar en todo momento a las personas con síntomas, para su tratamiento oportuno.  </p>}
+            {<p>La participación es voluntaria, por lo que tienes el derecho de no contestar a las preguntas. El cuestionario fue autorizado previamente por el Comité de Ética del CES/UVG.  Tu decisión de participar en esta vigilancia de salud no afectará tu trabajo, tus estudios, o la atención de tu enfermedad.</p>}
+            {<p>Si en caso tú o tus familiares presentan síntomas sugestivos de COVID-19 y autorizan que se les tome una muestra, el Centros de Estudios en Salud de la UVG coordinará la visita para tomar una muestra de hisopado nasofaríngeo y correrá las pruebas necesarias de manera gratuita.  Te informaremos el resultado. Si tienes alguna pregunta sobre esta vigilancia,  puedes comunicarte con XXX al correo XX@ uvg.edu.gt. Si tienes dudas sobre tus derechos como participante puedes comunicarte con la Dra. Ingrid Contreras, presidente del Comité de Ética del CES/UVG en horario de oficina al teléfono 2329-8456 o al email icontreras@ces.uvg.edu.gt. </p>}
         </div>
         <div className='agreements-buttons'>
             <Link to='/dash' style={{ textDecoration: 'none' }}>
-                <button className='button no' onClick={dismiss}>
+                <button className='button no' onClick={notConsenting}>
                         Rechazar
                 </button>
             </Link>
@@ -32,17 +30,18 @@ const Agreement =({dismiss})=>(
 
 export default connect(
     (state)=>({
-        selected:selectors.getSelectedId(state)
+        selected:selectors.getSelected(state)
     }),
     (dispatch)=>({
-        dismiss(report){
-            dispatch(reportActions.dismissReport(report))
+        notConsenting(report){
+            dispatch(reportActions.notConsentingReport(report))
         },
     }),
     (stateProps, dispatchProps)=>({
         selected:stateProps.selectReport,
-        dismiss(){
-            dispatchProps.dismiss(stateProps.selected)
+        notConsenting(){
+            dispatchProps.notConsenting(stateProps.selected.id)
+            console.log(stateProps.selected.id)
         }
     })
 )(Agreement)

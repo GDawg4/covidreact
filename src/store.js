@@ -16,8 +16,7 @@ export const configureStore = () => {
     const persistedReducer = persistReducer(
         {
             key: 'rootx',
-            storage,
-            whitelist: ['auth'],
+            storage
         },
         reducer,
     );

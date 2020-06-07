@@ -1,6 +1,9 @@
 .questionnaire-wrapper{
-    margin-top: 6rem;
+    margin-top: 8rem;
+    display: flex;
+    flex-direction: row;
 }
+
 
 .affection-wrapper{
     display: flex;
@@ -22,6 +25,7 @@
     height: 2rem;
     justify-content: center;
     margin-bottom: 1rem;
+    margin-left: 2rem;
 }
 
 .field{
@@ -31,17 +35,18 @@
 
 .a-one{
     position: absolute;
-    margin-left: 10rem;
+    margin-left: 12rem;
+    overflow-y: hidden;
 }
 
 .a-two{
     position: absolute;
-    margin-left: 40rem;
+    margin-left: 46rem;
 }
 
 .a-three{
     position: absolute;
-    margin-left: 70rem;
+    margin-left: 84rem;
 }
 
 .affection-columns{
@@ -59,4 +64,179 @@
 .affection-photo{
     width: 15rem;
     height: 15rem;
+}
+
+.affection-title{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 3rem;
+    line-height: 3rem;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-right: 2rem;
+}
+
+strong{
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 35rem;
+    align-items: center;
+    margin-left: 6rem;
+}
+.form-wrapper{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.q-title{
+    font-weight: bolder;
+}
+.q-label{
+    font-weight: bold;
+}
+
+.question{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 36px;
+    font-size: 1rem;
+    background-color: #c4c4c4;
+    width: 30rem;
+    border-radius: 1rem;
+    height: 52px;
+    justify-content: center;
+    align-items: center;
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.check-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.submit-button{
+    height: 4rem;
+    width: 7rem;
+    font-size: 1.2rem;
+    background-color: #078B45;
+    color: #e7e7e7;
+    border-radius: 0.5rem;
+    border-width: thin;
+    border-color: #078B45;
+}
+
+.clear{
+}
+
+.q-label-div{
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+}
+
+/* Make clicks pass-through */
+#nprogress {
+    pointer-events: none;
+}
+
+#nprogress .bar {
+    background: #078B45;
+
+    position: fixed;
+    z-index: 1031;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+    display: block;
+    position: absolute;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+    opacity: 1.0;
+
+    -webkit-transform: rotate(3deg) translate(0px, -4px);
+    -ms-transform: rotate(3deg) translate(0px, -4px);
+    transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+    display: block;
+    position: fixed;
+    z-index: 1031;
+    top: 35rem;
+    left: 25rem;
+}
+
+#nprogress .spinner-icon {
+    width: 5rem;
+    height: 5rem;
+    box-sizing: border-box;
+
+    border: solid 2px transparent;
+    border-top-color: #21822B;
+    border-left-color: #078B45;
+    border-radius: 50%;
+
+    -webkit-animation: nprogress-spinner 400ms linear infinite;
+    animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+    overflow: hidden;
+    position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+    position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+    0%   { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes nprogress-spinner {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.q-button-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.q-submit{
+    background-color: #6ABF4A;
+    position: absolute;
+    margin-left: 63rem;
+    margin-top: 1rem;
+}
+
+.q-back{
+    background-color: #3B3A3B;
+    position: absolute;
+    margin-left: 35rem;
+    margin-top: 1rem;
 }

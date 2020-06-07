@@ -1,16 +1,19 @@
-import React from "react";
-import './styles.css'
-import {useEffect} from 'react'
+import React, {useEffect} from "react";
 import {connect} from 'react-redux'
 import sortBy from 'lodash/sortBy'
+import includes from 'lodash/includes'
+import {Spinner} from "react-redux-spinner";
 
 import Person from "../Person";
 import * as reportActions from '../../actions/report'
+import * as questionnaireActions from '../../actions/questionnaire'
 import * as selectors from '../../reducers'
 import defaultUser from "../../resources/default.svg";
-import {startFetchingReport} from "../../actions/report";
+import './styles.css'
+import * as actions from "../../actions/report";
 
-const Persons = ({allPersons, sort, fetch}) => {
+const Persons = ({allPersons, sort, fetch, fetchQuestionnaire}) => {
+    useEffect(fetchQuestionnaire, [])
     return (
         <div>
             <div className='botones'>
@@ -19,6 +22,7 @@ const Persons = ({allPersons, sort, fetch}) => {
                 <img src={defaultUser} className='sort-button twob' onClick={sort}/>
             </div>
             <div className='persons'>
+                <Spinner/>
                 {allPersons.map((person, index) => <Person person = {person} index = {index}/>)}
             </div>
         </div>
@@ -27,14 +31,18 @@ const Persons = ({allPersons, sort, fetch}) => {
 
 export default connect (
     (state) =>({
-        allPersons:selectors.getSomeReports(state, 0),
+        allPersons:selectors.getActiveObject(state),
         sort(){
             return sortBy(selectors.getSomeReports(state, 0), 'nametag')
         }
     }),
     (dispatch) => ({
         fetch(){
-            dispatch(startFetchingReport())
+            dispatch(actions.startFetchingReport())
+        },
+        fetchQuestionnaire(){
+            console.log('yya')
+            //dispatch(questionnaireActions.startFetchingQuestionnaire())
         }
     })
 )(Persons)

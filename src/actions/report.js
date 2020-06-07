@@ -1,11 +1,13 @@
 import * as types from '../types/report';
-
+import {pendingTask, begin, end, endAll} from "react-redux-spinner";
 
 export const startFetchingReport = () => ({
     type: types.REPORT_FETCH_STARTED,
+    [ pendingTask ]: begin,
 });
 export const completeFetchingReport = (entities, order) => ({
     type: types.REPORT_FETCH_COMPLETED,
+    [ pendingTask ]: end,
     payload: {
         entities,
         order,
@@ -23,8 +25,16 @@ export const deSelectReport = (id) =>({
     type:types.REPORT_DESELECTED
 })
 
+export const notConsentingReport = (id) => ({
+    type:types.REPORT_NOT_CONSENTED,
+    payload:{
+        id
+    }
+})
+
 export const failFetchingReport = error => ({
     type: types.REPORT_FETCH_FAILED,
+    [ pendingTask ]: endAll,
     payload: {
         error,
     },

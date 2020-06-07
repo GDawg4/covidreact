@@ -1,7 +1,9 @@
 import omit from 'lodash/omit';
 import { combineReducers } from 'redux';
+import uniq from 'lodash/uniq'
 
 import * as types from '../types/report';
+import difference from "lodash/difference";
 
 
 const byId = (state = {}, action) => {
@@ -74,7 +76,7 @@ const byId = (state = {}, action) => {
 const order = (state = [], action) => {
     switch(action.type) {
         case types.REPORT_FETCH_COMPLETED: {
-            return [...state, ...action.payload.order];
+            return uniq([...state, ...action.payload.order]);
         }
         case types.REPORT_ADD_STARTED: {
             return [...state, action.payload.id];
@@ -123,6 +125,39 @@ const selected = (state = null, action) => {
     }
 }
 
+const dismissed = (state = [], action) => {
+    switch (action.type) {
+        case types.REPORT_DISMISSED:{
+            return uniq([...state, action.payload.id])
+        }
+        default:{
+            return state
+        }
+    }
+}
+
+const noConsent = (state = [], action) => {
+    switch (action.type) {
+        case types.REPORT_NOT_CONSENTED:{
+            return uniq([...state, action.payload.id])
+        }
+        default:{
+            return state
+        }
+    }
+}
+
+const confirmed = (state = [], action) => {
+    switch (action.type) {
+        case types.REPORT_CONFIRMED:{
+            return uniq([...state, action.payload.id])
+        }
+        default:{
+            return state
+        }
+    }
+}
+
 const error = (state = null, action) => {
     switch(action.type) {
         case types.REPORT_FETCH_FAILED: {
@@ -147,13 +182,25 @@ export default combineReducers({
     isFetching,
     selected,
     error,
+    dismissed,
+    noConsent,
+    confirmed
 });
 
 export const getReport = (state, id) => state.byId[id];
 export const getAllReports = state => state.order.map(id => getReport(state, id));
+export const getReportList = state => state.order
 export const getSomeReports = (state, cutOff) => state.order.map(id => getReport(state, id)).filter(report => report.possible_case >= cutOff)
 export const isFetchingReports = state => state.isFetching;
 export const getFetchingReportsError = state => state.error;
 export const getSelected = state => getReport(state, state.selected)
 export const getSelectedId = state => state.selected
 export const getAnswers = (state, id) => state.byId[id].answers_given
+export const getDismissedList = (state) => state.dismissed
+export const getDismissedObject = (state) => state.dismissed.map(id => getReport(state, id))
+export const getNotConsentingList = (state) => state.noConsent
+export const getNotConsentingObject = (state) => state.noConsent.map(id => getReport(state, id))
+export const getConfirmedList = (state) => state.confirmed
+export const getConfirmedObject = (state) => state.confirmed.map(id => getReport(state, id))
+export const getActiveList = (state) => difference(difference(getReportList(state), getDismissedList(state)), getNotConsentingList(state))
+export const getActiveObject = (state) => getActiveList(state).map(id => getReport(state, id))

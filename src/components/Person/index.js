@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from 'react-redux'
 
+import find from 'lodash/find'
 import './styles.css'
 import * as actions from '../../actions/report'
 import * as selectors from '../../reducers'
@@ -12,10 +13,13 @@ const Person = ({person, index, selected, select}) => (
                 {person.nametag}
             </p>
             <p className='info-report phone-report'>
-                12345678
+                {find(person.file, ['id_questions.id', 2]).description}
             </p>
             <p className='info-report carne-report'>
                 {person.carne}
+            </p>
+            <p>
+                {person.latest.slice(0, 10)}
             </p>
             <p className='info-report status-report'>
                 Nuevo reporte
@@ -23,10 +27,8 @@ const Person = ({person, index, selected, select}) => (
         </div>
         <div className= 'sign-wrapper'>
             <div className='sign'
-                 style={!person.consent ? {backgroundColor: '#2B8BE4'} :
-                     !person.is_contacted ? {backgroundColor: '#21822B'} :
-                         !person.is_confirmed ? {backgroundColor: '#DDE100'} :
-                             {backgroundColor: '#E12900'}}/>
+                 style={!person.report_status.isContacted?
+                     {backgroundColor:'green'}:{backgroundColor:'blue'}}/>
         </div>
     </div>
 

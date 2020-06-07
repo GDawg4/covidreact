@@ -1,17 +1,17 @@
 import {call, takeEvery, put} from 'redux-saga/effects'
 import {normalize} from 'normalizr'
 
-import * as actions from '../actions/report'
-import * as types from '../types/report'
-import * as schemas from '../schemas/report'
+import * as actions from '../actions/questionnaire'
+import * as types from '../types/questionnaire'
+import * as schemas from '../schemas/questionnaire'
 
 const BASE_URL = 'http://127.0.0.1:8000/api/v1';
 
-function* fetchReports(action) {
+function* fetchQuestionnaires(action) {
     try{
         const response =yield call(
             fetch,
-            `${BASE_URL}/users/file`,
+            `${BASE_URL}/questionnaire/4/questions`,
             {
                 method:'GET',
                 headers:{
@@ -22,12 +22,11 @@ function* fetchReports(action) {
         if (response.status === 200){
             const jsonResult = yield response.json();
             const{
-                entities:{person},
+                entities:{questions, answer},
                 result
-            } = normalize(jsonResult, schemas.personListSchema)
-            console.log(person)
+            } = normalize(jsonResult, schemas.questionnaireListSchema)
             yield put(
-                actions.completeFetchingReport(person, result)
+                actions.completeFetchingQuestionnaire(questions, result)
             )
         }else {
             console.log('Something went wrong')
@@ -37,9 +36,9 @@ function* fetchReports(action) {
     }
 }
 
-export function* watchFetchReports() {
+export function* watchFetchQuestionnaires() {
     yield takeEvery(
-        types.REPORT_FETCH_STARTED,
-        fetchReports
+        types.QUESTIONNAIRE_FETCH_STARTED,
+        fetchQuestionnaires
     )
 }

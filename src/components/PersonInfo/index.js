@@ -6,6 +6,7 @@ import * as selectors from '../../reducers'
 import * as reportActions from '../../actions/report'
 import defaultUser from '../../resources/default.svg'
 import {Link} from "react-router-dom";
+import find from "lodash/find";
 
 const PersonInfo = ({info, dismiss, follow}) => (
     <div className='person-info'>
@@ -16,7 +17,11 @@ const PersonInfo = ({info, dismiss, follow}) => (
                     {info.nametag}
                 </div>
                 <div className='extra-info'>
-                    22446688
+                    {
+                        info.file ?
+                            find(info.file, ['id_questions.id', 2]).description:
+                            'N/A'
+                    }
                 </div>
                 <div className= 'extra-info'>
                     {info.useruvg}
@@ -45,10 +50,10 @@ const PersonInfo = ({info, dismiss, follow}) => (
             <div className='line'/>
             <div className='info-wrapper'>
                 <p className='info one'>
-                    {info.answers_given?
+                    {info.file?
                         <ul>
-                            {info.answers_given
-                                .filter(answer => answer.id_questions.id > 0 && answer.id_questions.id < 11)
+                            {info.file
+                                .filter(answer => (answer.id_questions.id > 0 && answer.id_questions.id < 11) || (answer.id_questions.id > 45))
                                 .map(answer => <li>{`${answer.id_questions.title}: ${answer.id_answer}`}</li>)
                             }
                         </ul>:
@@ -56,19 +61,18 @@ const PersonInfo = ({info, dismiss, follow}) => (
                     }
                 </p>
                 <p className='info two'>
-                    {info.answers_given?
+                    {info.report?
                         <ul>
-                            {info.answers_given
-                                .filter(answer => answer.id_questions.id > 45)
+                            {info.report
                                 .map(answer => <li>{`${answer.id_questions.title}: ${answer.id_answer}`}</li>)
                             }
                         </ul>:<p>Seleccione un reporte</p>
                     }
                 </p>
                 <p className='info three'>
-                    {info.answers_given?
+                    {info.file?
                         <ul>
-                            {info.answers_given
+                            {info.file
                                 .filter(answer => answer.id_questions.id > 12 && answer.id_questions.id < 28)
                                 .map(answer => <li>{`${answer.id_questions.title}: ${answer.id_answer}`}</li>)
                             }
@@ -97,6 +101,7 @@ export default connect(
     (dispatch) => ({
         dismiss(report){
             dispatch(reportActions.dismissReport(report))
+            dispatch(reportActions.deSelectReport(report))
         },
         follow(report){
             dispatch(reportActions.followReport(report))
