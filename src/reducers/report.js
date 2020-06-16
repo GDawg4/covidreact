@@ -127,7 +127,7 @@ const selected = (state = null, action) => {
 
 const dismissed = (state = [], action) => {
     switch (action.type) {
-        case types.REPORT_DISMISSED:{
+        case types.REPORT_DISMISSED_COMPLETED:{
             return uniq([...state, action.payload.id])
         }
         default:{
@@ -138,7 +138,7 @@ const dismissed = (state = [], action) => {
 
 const noConsent = (state = [], action) => {
     switch (action.type) {
-        case types.REPORT_NOT_CONSENTED:{
+        case types.REPORT_NOT_CONSENTED_COMPLETED:{
             return uniq([...state, action.payload.id])
         }
         default:{
@@ -149,7 +149,7 @@ const noConsent = (state = [], action) => {
 
 const confirmed = (state = [], action) => {
     switch (action.type) {
-        case types.REPORT_CONFIRMED:{
+        case types.REPORT_CONFIRMED_COMPLETED:{
             return uniq([...state, action.payload.id])
         }
         default:{
